@@ -60,7 +60,8 @@ This project analyzes land cover change in Gicumbi District, Rwanda, focusing on
 
 
 📷 **Pie Chart - Land Cover Distribution:**  
-<img width="684" height="656" alt="2" src="https://github.com/user-attachments/assets/a40fb8ce-d8d4-4c3b-a721-c9b582caa7c1" />
+<img width="582" height="331" alt="7" src="https://github.com/user-attachments/assets/d235cd72-ac69-477f-be0a-3ccff8094a95" />
+
 
 
 ---
@@ -81,8 +82,8 @@ This project analyzes land cover change in Gicumbi District, Rwanda, focusing on
 
 
 📷 **Dashboard Screenshot 2 - Area by Land Type:**  
-<img width="684" height="656" alt="2" src="https://github.com/user-attachments/assets/b8f96b25-f79e-48fd-b301-968117e6e504" />
 
+<img width="582" height="331" alt="7" src="https://github.com/user-attachments/assets/48fe8759-7214-4581-a9aa-7c69dd6e2290" />
 
 📊 Dashboard File: `gicumbi_forest_dashboard.pbix`
 
