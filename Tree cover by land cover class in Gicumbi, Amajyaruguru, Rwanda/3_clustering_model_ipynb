@@ -1,0 +1,64 @@
+# 1. Import Required Libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+
+# 2. Load the dataset (replace with your file path)
+df = pd.read_csv("gicumbi_forest_data.csv")
+
+# 3. Inspect the data
+print(df.head())
+print(df.info())
+
+# 4. Handle missing values
+df.dropna(inplace=True)
+
+# 5. Check data types and correct if needed
+print(df.dtypes)
+
+# 6. Select numeric features for clustering
+features = ['wri_tropical_tree_cover_extent__ha']
+X = df[features]
+
+# 7. Feature Scaling
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# 8. Determine optimal number of clusters using Elbow Method
+wcss = []
+for i in range(1, 10):
+    kmeans = KMeans(n_clusters=i, random_state=42)
+    kmeans.fit(X_scaled)
+    wcss.append(kmeans.inertia_)
+
+plt.plot(range(1, 10), wcss, marker='o')
+plt.title('Elbow Method')
+plt.xlabel('Number of clusters')
+plt.ylabel('WCSS')
+plt.grid(True)
+plt.show()
+
+# 9. Fit KMeans with optimal clusters (let's use k=3 for simplicity)
+kmeans = KMeans(n_clusters=3, random_state=42)
+df['Cluster'] = kmeans.fit_predict(X_scaled)
+
+# 10. Evaluate clustering with silhouette score
+score = silhouette_score(X_scaled, df['Cluster'])
+print(f'Silhouette Score: {score:.2f}')
+
+# 11. Visualize the Clusters
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=df['adm2'], y=df['wri_tropical_tree_cover_extent__ha'],
+                hue=df['Cluster'], palette='viridis', s=100)
+plt.title('Gicumbi Sectors Clustered by Forest Cover')
+plt.xlabel('Sector Code')
+plt.ylabel('Forest Cover (ha)')
+plt.legend(title='Cluster')
+plt.grid(True)
+plt.show()
+
+# 12. Save the clustered data
+df.to_csv("gicumbi_clustered_forest.csv", index=False)
