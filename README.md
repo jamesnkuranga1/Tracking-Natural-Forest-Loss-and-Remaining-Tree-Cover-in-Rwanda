@@ -1,4 +1,4 @@
-# 🌳 Tracking Forest Loss in Gicumbi District (2001–2022)
+# 🌳 Tracking Forest Loss and  in Gicumbi District (2001–2022)
 
 ## 👤 Student Information
 
